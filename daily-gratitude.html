@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="something-i-like-today.css"> <!-- Updated stylesheet reference -->
+    <title>Gauri's Daily Gratitude Journal</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Gauri's Daily Gratitude Journal</h1>
+    </div>
+    
+    <div class="controls">
+        <button id="add-photo">+</button>
+        <button id="add-text">Text</button>
+    </div>
+
+    <div class="grid-container" id="grid-container">
+        <!-- Photos and text will be dynamically added here -->
+    </div>
+
+    <script>
+        // Functionality to add photos and text
+        document.getElementById('add-photo').addEventListener('click', function() {
+            const container = document.getElementById('grid-container');
+            const newPhotoBox = document.createElement('div');
+            newPhotoBox.classList.add('grid-item');
+
+            // Create an input for image upload
+            const imageInput = document.createElement('input');
+            imageInput.type = 'file';
+            imageInput.accept = 'image/*';
+            imageInput.onchange = function(event) {
+                displayImage(event, newPhotoBox);
+            };
+
+            newPhotoBox.appendChild(imageInput);
+            container.appendChild(newPhotoBox);
+        });
+
+        document.getElementById('add-text').addEventListener('click', function() {
+            const container = document.getElementById('grid-container');
+            const newTextBox = document.createElement('div');
+            newTextBox.classList.add('grid-item');
+            newTextBox.contentEditable = true;
+            newTextBox.textContent = "Click to edit";
+            container.appendChild(newTextBox);
+        });
+
+        function displayImage(event, container) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Create an img element and set its src to the uploaded file's data
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('uploaded-image');
+
+                    // Replace the input with the image
+                    container.innerHTML = '';
+                    container.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="gauri-books.css">
+    <title>Gauri's Book Recommendations </title>
+</head>
+<body>
+    <div class="header">
+        <h1>Gauri's Book Recommendations </h1>
+    </div>
+    
+    <div class="controls">
+        <button id="add-photo">+</button>
+    </div>
+
+    <div class="grid-container" id="grid-container">
+        <!-- Photos will be dynamically added here -->
+    </div>
+
+    <script>
+        // Functionality to add photos
+        document.getElementById('add-photo').addEventListener('click', function() {
+            const container = document.getElementById('grid-container');
+            const newPhotoBox = document.createElement('div');
+            newPhotoBox.classList.add('grid-item');
+
+            // Create an input for image upload
+            const imageInput = document.createElement('input');
+            imageInput.type = 'file';
+            imageInput.accept = 'image/*';
+            imageInput.onchange = function(event) {
+                displayImage(event, newPhotoBox);
+            };
+
+            newPhotoBox.appendChild(imageInput);
+            container.appendChild(newPhotoBox);
+        });
+
+        function displayImage(event, container) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // Create an img element and set its src to the uploaded file's data
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('uploaded-image');
+
+                    // Replace the input with the image
+                    container.innerHTML = '';
+                    container.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

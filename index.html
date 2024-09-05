@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Photo Boards</title>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500&display=swap">
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gauri's Photo Boards</h1>
+        <div class="buttons-container">
+            <button id="addBoardBtn">Add New Board</button>
+            <button id="meBeingMeBtn">Me Being Me</button>
+        </div>
+        <div id="boardsContainer"></div>
+    </div>
+
+    <!-- Popup Form -->
+    <div id="popupForm" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="closePopup">&times;</span>
+            <h2>Create New Board</h2>
+            <form id="boardForm">
+                <label for="boardName">Board Name:</label>
+                <input type="text" id="boardName" name="boardName" required>
+                
+                <label for="boardImage">Board Cover Image:</label>
+                <input type="file" id="boardImage" name="boardImage" accept="image/*" required>
+                
+                <button type="submit">Create Board</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Link to External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

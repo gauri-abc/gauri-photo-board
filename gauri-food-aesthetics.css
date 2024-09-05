@@ -1,0 +1,74 @@
+body {
+    font-family: 'Dancing Script', cursive;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, #ffe4e1, #ffdde1);
+}
+
+.header {
+    text-align: center;
+    margin: 20px;
+}
+
+.controls {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #ffb6c1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff69b4;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns layout */
+    gap: 0; /* Minimized gap between grid items */
+    width: 100%; /* Ensures container takes full width */
+    max-width: 1000px; /* Limits maximum width */
+    margin-top: 20px;
+    padding: 0; /* Removes any extra padding inside the container */
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width */
+}
+
+.grid-item {
+    width: 200px; /* Fixed width */
+    height: 270px; /* Fixed height */
+    background-color: #ffffff;
+    border: 2px solid #ff69b4;
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-color 0.3s ease;
+    overflow: hidden;
+    margin: 0; /* Remove margin around grid items */
+}
+
+/* Add margin-top to the second row of grid items */
+.grid-item:nth-child(n+5) {
+    margin-top: 20px;
+}
+
+.uploaded-image {
+    max-width: 100%; /* Ensure image fits within the box */
+    max-height: 100%; /* Ensure image fits within the box */
+}
